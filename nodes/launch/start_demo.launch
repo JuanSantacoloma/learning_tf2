@@ -1,0 +1,27 @@
+<launch>
+      <!-- Turtle sim y teleop -->
+      <node pkg="turtlesim" type="turtlesim_node" name="sim"/>
+      <node pkg="turtlesim" type="turtle_teleop_key" name="teleop" output="screen"/>
+
+    <!-- Broadcaster turtle1 -->
+    <node name="turtle1_tf2_broadcaster" pkg="learning_tf2" type="turtle_tf2_broadcaster.py" respawn="false" output="screen" >
+      <param name="turtle" type="string" value="turtle1" />
+    </node>
+    <!-- Broadcaster turtle2 -->
+    <node name="turtle2_tf2_broadcaster" pkg="learning_tf2" type="turtle_tf2_broadcaster.py" respawn="false" output="screen" >
+      <param name="turtle" type="string" value="turtle2" /> 
+    </node>
+    <!-- Listener -->
+    <node pkg="learning_tf2" type="turtle_tf2_listener.py" 
+          name="listener" output="screen"/>
+    <!-- Fixed Frames -->
+    <!-- <node pkg="learning_tf2" type="fixed_tf2_broadcaster.py"
+          name="broadcaster_fixed" output="screen"/> -->
+    <!-- Dynamic frames -->
+    <!-- <node pkg="learning_tf2" type="dynamic_tf2_broadcaster.py"
+          name="broadcaster_dynamic" output="screen"/> -->
+    <!-- Trayectory frames -->
+     <node pkg="learning_tf2" type="trajectory_tf2_broadcaster.py"
+          name="broadcaster_dynamic" output="screen"/>
+
+  </launch>
